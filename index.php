@@ -113,10 +113,11 @@
 
       .icon_404:after {
         background-image: url("http://freelansim.ru/images/404_icon.png");
+        width: 200px
       }
 
       .icon_500:after {
-        background-image: url("http://freelansim.ru/images/500_icon.png");
+        background-image: url("assets/img/logo.png");
       }
 
       .buttons {
