@@ -12,17 +12,17 @@ require_once 'Config.php';
 class SisgesproApi {
 
 
-    function __construct($valid, $array, $data) {
+    function __construct($valid, $array, $data, $valid_fields) {
         if($valid){
             $this->authenticate();
         }
-        $this->verifyRequiredParams($array, $data);
+        $this->verifyRequiredParams($array, $data, $valid_fields);
     }
 
      /**
      * Verificando los parametros requeridos en el metodo o endpoint
      */
-    public function verifyRequiredParams($required_fields, $array) {
+    public function verifyRequiredParams($required_fields, $array, $valid_fields) {
         if($required_fields != null && $array != null){
             $error = false;
             $error_fields = "";
@@ -44,6 +44,12 @@ class SisgesproApi {
                 $this->echoResponse(422, $response);
                 exit();
             }
+        }else if($valid_fields){
+            $response = array();
+            $response["status"] = 422;
+            $response["message"] = 'La información falta o está vacía';
+            $this->echoResponse(422, $response);
+            exit();
         }
     }
 

@@ -8,7 +8,7 @@
 
     function get(){
         $res = $_GET;
-        $api = new SisgesproApi(false,array("user","password"), $res);
+        $api = new SisgesproApi(false,array("user","password"), $res, true);
         $db = new UsuarioHandler();
         $response = $db->getLogin($res);
         $api->echoResponse($response->status, $response);

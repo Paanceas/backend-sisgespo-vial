@@ -33,9 +33,9 @@ class DbConnect {
         } catch(PDOException $ex) {
             // if the environment is development, show error details, otherwise show generic message
             if ( (defined('ENVIRONMENT')) && (ENVIRONMENT == 'development') ) {
-                $msn = 'An error occured connecting to the database! Details: ' . $ex->getMessage();
+                $msn = '¡Ocurrió un error al conectarse a la base de datos! Detalles: ' . $ex->getMessage();
             } else {
-                $msn = 'An error occured connecting to the database!';
+                $msn = '¡Ocurrió un error al conectarse a la base de datos!';
             }
             return $msn;
         }
