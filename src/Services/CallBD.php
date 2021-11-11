@@ -24,7 +24,6 @@ class CallBD {
 
     public function callDBReturn($query, $return)
     {
-        try {
             $error = $this->connection();
             if($error == null){
                 $sql = $query;
@@ -38,9 +37,6 @@ class CallBD {
                 return null;
             }
             return $this->response;
-        } catch(Exception $e){
-            return null;
-        }
     }
 
     public function callDB($query, $label, $all)
