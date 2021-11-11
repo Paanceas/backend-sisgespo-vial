@@ -22,6 +22,27 @@ class CallBD {
         return $error;
     }
 
+    public function callDBReturn($query, $return)
+    {
+        try {
+            $error = $this->connection();
+            if($error == null){
+                $sql = $query;
+                $queryResponse = null;
+                $cont = '';
+                $q = $this->conn->query($sql);
+                $q->setFetchMode(PDO::FETCH_ASSOC);
+                $queryResponse = $q->fetch();
+                return $queryResponse[$return];
+            }else{
+                return null;
+            }
+            return $this->response;
+        } catch(Exception $e){
+            return null;
+        }
+    }
+
     public function callDB($query, $label, $all)
     {
         try {
@@ -61,6 +82,19 @@ class CallBD {
             }
             return $this->response;
         }
+    }
+
+    public function resolveCallBD($type, $e){
+        if($type){
+            $this->response->status = 200;
+            $this->response->message = $e;
+            $this->response->body = null;
+        }else{
+            $this->response->status = 500;
+            $this->response->message = $e->getMessage();
+            $this->response->body = null;
+        }
+        return $this->response;
     }
 
 
