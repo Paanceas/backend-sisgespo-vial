@@ -6,6 +6,14 @@
 
     include_once 'common/http.php';
 
+    function get(){
+        $res = $_GET;
+        $api = new SisgesproApi(true,array("id_proveedor"), $res, true);
+        $db = new VendorsHandler();
+        $response = $db->getProveedor($res);
+        $api->echoResponse($response->status, $response);
+    }
+
     function post(){
         $json = file_get_contents("php://input",true);
         $res = json_decode($json, true); 

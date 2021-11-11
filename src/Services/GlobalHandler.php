@@ -14,7 +14,7 @@ class GlobalHandler {
 
     public function getValid()
     {
-        $sql = "CALL maphis.getBaseDatos();";
+        $sql = "CALL sisgespro.getBaseDatos();";
         return $this->global->callDB($sql,'Api funcionando correctamente',false);
     }
 }

@@ -25,9 +25,14 @@ class VendorsHandler {
 
     public function updProveedor($res)
     {
-
         $sql = "CALL sisgespro.updProveedor('".$res['id_proveedor']."','".$res['direccion']."','".$res['celular']."','".$res['telefono']."','".$res['correo']."');";
         return $this->global->callDB($sql,'Proveedor actualizado',false);
+    }
+
+    public function getProveedor($res)
+    {
+        $sql = "CALL sisgespro.getProveedor('".$res['id_proveedor']."');";
+        return $this->global->callDB($sql,'Consulta Materiales ',true);
     }
 }
 
