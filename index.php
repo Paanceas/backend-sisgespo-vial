@@ -212,7 +212,7 @@
     </style>
     <div class="layout">
       <div class="title">Sisgespro-vial Api Rest</div>
-      <div class="text icon_500">Version 0.0.1</div>
+      <div class="text icon_500">Version 1.0.5</div>
     </div>
   </body>
 </html>
