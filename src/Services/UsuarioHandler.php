@@ -16,6 +16,12 @@ class UsuarioHandler {
         $sql = "CALL sisgespro.getLogin('".$res['user']."','".$res['password']."');";
         return $this->global->callDB($sql,'Consulta usuario',false);
     }
+
+    public function getUsuarios($res)
+    {
+        $sql = "CALL sisgespro.getUsuarios();";
+        return $this->global->callDB($sql,'Consulta de usuarios ',true);
+    }
 }
 
 ?>
