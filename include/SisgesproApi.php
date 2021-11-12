@@ -29,9 +29,16 @@ class SisgesproApi {
             $request_params = $array;
     
             foreach ($required_fields as $field) {
-                if (!isset($request_params[$field]) || strlen(trim($request_params[$field])) <= 0) {
-                    $error = true;
-                    $error_fields .= $field . ', ';
+                if(isset($request_params[$field]) && is_array($request_params[$field])){
+                    if (count($request_params[$field])<=0) {
+                        $error = true;
+                        $error_fields .= $field . ', ';
+                    }
+                }else{
+                    if (!isset($request_params[$field]) || strlen(trim($request_params[$field])) <= 0) {
+                        $error = true;
+                        $error_fields .= $field . ', ';
+                    }
                 }
             }
         
