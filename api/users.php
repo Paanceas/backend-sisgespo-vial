@@ -1,6 +1,5 @@
-
 <?php 
-    include_once 'common/imports.php';
+ include_once 'common/imports.php';
 
     include_once PATH.'/src/Services/UsuarioHandler.php'; 
     $db = new UsuarioHandler();
@@ -14,4 +13,5 @@
         $response = $db->getUsuarios($res);
         $api->echoResponse($response->status, $response);
     }
-?>
+
+    ?>
