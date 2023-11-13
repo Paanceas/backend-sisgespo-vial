@@ -1,0 +1,20 @@
+version: "3.8"
+services:
+  php:
+    build:
+      context: ./
+      dockerfile: dockerfile
+    container_name: php-sisgespro
+    environment:
+      - DB_USERNAME=root
+      - DB_PASSWORD=12345
+      - DB_HOST=host.docker.internal
+      - DB_NAME=siegvadbd
+      - API_KEY=828fbcc651f82f21e0b6fc0c23a4f5c4
+    restart: always
+    ports:
+      - 8081:80
+    volumes:
+      - ./:/var/www/html
+volumes:
+  html: {}
