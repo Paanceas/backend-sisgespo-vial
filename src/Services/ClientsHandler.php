@@ -16,6 +16,12 @@ class ClientsHandler {
         $sql = "CALL sisgespro.getClientes();";
         return $this->global->callDB($sql,'Consulta de clientes ',true);
     }
+
+    public function getClientesAll($res)
+    {
+        $sql = "CALL sisgespro.getClientesYCotizaciones();";
+        return $this->global->callDB($sql,'Consulta de clientes ',true);
+    }
 }
 
 ?>
