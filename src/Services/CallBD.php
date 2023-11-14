@@ -92,8 +92,6 @@ class CallBD {
         }
         return $this->response;
     }
-
-
 }
 
 ?>
