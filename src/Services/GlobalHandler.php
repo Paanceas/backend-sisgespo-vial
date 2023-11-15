@@ -33,6 +33,11 @@ class GlobalHandler {
         $sql = "CALL sisgespro.getCotizacionPorAnio()";
         return $this->global->callDB($sql,'Consulta Exitosa ',true);
     }
+
+    public function getInventory(){
+        $sql = "CALL sisgespro.getInventory()";
+        return $this->global->callDB($sql,'Consulta Exitosa ',true);
+    }
 }
 
 ?>
