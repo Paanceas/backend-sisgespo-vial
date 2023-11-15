@@ -38,7 +38,17 @@ class ProjectHandler {
         }
     }
 
+    public function updStateProject($res)
+    {
+        $sql = "CALL sisgespro.updStateProject('".$res['id_proyecto']."', '".$res['id_estado']."');";
+        return $this->global->callDB($sql,'Estado de proyecto actualizado',true);
+    }
 
+    public function getInventoryProject($res)
+    {
+        $sql = "CALL sisgespro.getInventoryProject('".$res['id_proyecto']."');";
+        return $this->global->callDB($sql,'Consulta exitosa',true);
+    }
 
 }
 

@@ -24,4 +24,14 @@
         $response = $db->setProyecto($res);
         $api->echoResponse($response->status, $response);
     }
+
+    function put(){
+        $json = file_get_contents("php://input",true);
+        $res = json_decode($json, true); 
+        $api = new SisgesproApi(true,array("id_proyecto", "id_estado"), $res, true);
+        $db = new ProjectHandler();
+        $response = $db->updStateProject($res);
+        $api->echoResponse($response->status, $response);
+    }
+
 ?>
