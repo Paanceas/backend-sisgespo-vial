@@ -7,14 +7,37 @@ services:
     container_name: php-sisgespro
     environment:
       - DB_USERNAME=root
-      - DB_PASSWORD=12345
+      - DB_PASSWORD=root
       - DB_HOST=host.docker.internal
-      - DB_NAME=siegvadbd
+      - DB_NAME=sisgespro
       - API_KEY=828fbcc651f82f21e0b6fc0c23a4f5c4
+    depends_on:
+        mysql:
+          condition: service_healthy
     restart: always
     ports:
       - 8081:80
     volumes:
       - ./:/var/www/html
+  mysql:
+    image: mysql:8.0.35
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    volumes:
+      - mysql-data:/var/lib/mysql
+      - ./mysql-init:/docker-entrypoint-initdb.d # init sql scripts
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "--silent"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
 volumes:
+  mysql-data:
   html: {}
